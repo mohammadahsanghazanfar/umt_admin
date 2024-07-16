@@ -1,0 +1,34 @@
+.loginform{
+    
+    margin-left: 20%;
+    margin-top: 5%;
+    
+
+   label{
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-size: larger !important;
+    
+    
+  
+
+   } 
+   .ant-input{
+    
+    background-color: white !important;
+    border: 1px solid black;
+    font-size: large;
+
+   }
+   .ant-input-affix-wrapper{
+    margin-left: 20px;
+    background-color: white  !important;
+    border:   1px solid black;
+    font-size: large;
+
+    
+   }
+   #basic_username{
+      margin-left: 20px;
+   }
+}
