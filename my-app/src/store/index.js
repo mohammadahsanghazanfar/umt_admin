@@ -2,7 +2,7 @@
 
 import {createSlice,configureStore} from '@reduxjs/toolkit'
 
-  const initialState={userData:[]}
+  const initialState={userData:[],id:1,obj:{},editIsClicked:false}
 
 const slice=createSlice({
     name:'userData',
@@ -15,7 +15,7 @@ const slice=createSlice({
         update(state,action){
           const updatedItems=state.userData.map((item)=>{
             if(action.payload.id===item.id){
-              return{...item,username:action.payload.username,password:action.payload.password,role:action.payload.role,department:action.payload.department}
+              return{...item,title:action.payload.title,writer:action.payload.writer,releasedate:action.payload.releasedate,avatar :action.payload.avatar}
             }
             return item
           })
@@ -31,6 +31,15 @@ const slice=createSlice({
             } 
             i++
           }
+        },
+        incrementId(state){
+         state.id +=1
+        },
+        setObject(state,action){
+          state.obj=action.payload
+        },
+        setEditIsClicked(state,action){
+          state.editIsClicked=action.payload
         }
     }
 })

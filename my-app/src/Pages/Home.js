@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../Components/navbar';
 import MyForm from '../Components/Form';
 import Table1 from '../Components/Table';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Button } from 'antd';
 import './Home.scss';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../store';
 
 const {  Content, Sider } = Layout;
 
@@ -29,11 +32,17 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
   };
 });
 
-const App = () => {
+const App = ({checkAdd}) => {
 
   const [showLogout, setshowLogout] = useState(true);
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
 
- 
+   const addMovieHandle=()=>{
+          checkAdd(true)
+          dispatch(userActions.setObject({}))
+          navigate('/userform')
+   }
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -70,9 +79,9 @@ const App = () => {
               margin: '16px 0',
             }}
           >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
+
+            <Button className='addButton' type='primary' onClick={addMovieHandle}>  Add Movie</Button>
+          
           </Breadcrumb>
           <Content
             style={{

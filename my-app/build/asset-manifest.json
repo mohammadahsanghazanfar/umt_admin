@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/umt_admin/static/css/main.cec0b83f.css",
+    "main.js": "/umt_admin/static/js/main.f3d429d4.js",
+    "static/media/umt.jpg": "/umt_admin/static/media/umt.15c4d21be659d35d1088.jpg",
+    "index.html": "/umt_admin/index.html",
+    "main.cec0b83f.css.map": "/umt_admin/static/css/main.cec0b83f.css.map",
+    "main.f3d429d4.js.map": "/umt_admin/static/js/main.f3d429d4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cec0b83f.css",
+    "static/js/main.f3d429d4.js"
+  ]
+}

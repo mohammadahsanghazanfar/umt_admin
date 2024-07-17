@@ -1,20 +1,28 @@
 import React, { useState } from "react";
-import { Table, Button, Modal } from "antd";
-import Modaling from "./Modal";
+import { Table, Button, Modal, Avatar } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+
+
 import { useSelector, useDispatch } from "react-redux";
 import { userActions } from "../store";
+import { useNavigate } from "react-router-dom";
 
-const Table1 = ({ dataForTable, Delete, updateUser }) => {
+const Table1 = () => {
   const [open, setOpen] = useState(false);
   const [editTouched, setEditTouched] = useState(false);
   const [updatedObject, setUpdatedObject] = useState({});
   const datashown = useSelector((state) => state.userData.userData);
   const dispatch = useDispatch();
 
+  
+  
+  const navigate=useNavigate()
+  
   const handleEditing = (record) => {
-    setUpdatedObject(record);
-    setOpen(true);
-    setEditTouched(true);
+       navigate('/userform')
+       dispatch(userActions.setObject(record))
+       dispatch(userActions.setEditIsClicked(true))
+       
   };
 
   const handleDelete = (record) => {
@@ -37,24 +45,31 @@ const Table1 = ({ dataForTable, Delete, updateUser }) => {
       key: "id",
     },
     {
-      title: "Username",
-      dataIndex: "username",
-      key: "username",
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
     },
     {
-      title: "Password",
-      dataIndex: "password",
-      key: "password",
+      title: "Writer",
+      dataIndex: "writer",
+      key: "writer",
     },
     {
-      title: "Role",
-      dataIndex: "role",
-      key: "role",
+      title: "Release Date",
+      dataIndex: "releasedate",
+      key: "releasedate",
+      render:(text)=>{
+        const date=new Date(text)
+        return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+      }
     },
     {
-      title: "Department",
-      dataIndex: "department",
-      key: "department",
+      title: "Movie",
+      dataIndex: "avatar",
+      key: "avatar",
+      render:(avatar)=>{
+          return <Avatar src={avatar} size='large'/>
+      }
     },
     {
       title: "Action",
@@ -64,26 +79,26 @@ const Table1 = ({ dataForTable, Delete, updateUser }) => {
       render: (_, record) => (
         <span>
           <Button
-            type="primary"
-            style={{ position: "relative", right: "20px" }}
-            size="small"
+            type="text"
+            style={{ position: "relative", right: "20px",fontSize:"large" }}
+            size="large"
             onClick={() => handleEditing(record)}
-          >
-            Edit
+            icon={<EditOutlined   style={{fontSize:"1.5rem",color:"#1677ff"}}/>}  >
+            
           </Button>
           <Button
             type="link"
             style={{
               marginRight: "8px",
-              color: "white",
-              backgroundColor: "red",
               position: "relative",
-              right: "8px",
+              right: "16px",
+              color:"red"
+
             }}
-            size="small"
             onClick={() => handleDelete(record)}
+            icon={<DeleteOutlined style={{fontSize:"1.5rem"}}/>}
           >
-            Delete
+          
           </Button>
         </span>
       ),
@@ -108,18 +123,9 @@ const Table1 = ({ dataForTable, Delete, updateUser }) => {
             </Table.Summary.Row>
           </Table.Summary>
         )}
-        sticky={{ offsetHeader: 64 }}
+        //sticky={{ offsetHeader: 64 }}
       />
-      <Modaling
-        open={open}
-        onClose={() => {
-          setOpen(false);
-          setEditTouched(false);
-          setUpdatedObject({});
-        }}
-        editIsClicked={editTouched}
-        updateObject={updatedObject}
-      />
+    
     </div>
   );
 };

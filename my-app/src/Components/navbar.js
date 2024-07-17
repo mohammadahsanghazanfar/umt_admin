@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined,UserOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './navbar.scss'; // Import your CSS file for styles
 
 const Navbar = ({showLog}) => {
@@ -26,7 +26,7 @@ const Navbar = ({showLog}) => {
       <Menu className='nav' mode='horizontal'  selectedKeys={selectedKeys} onClick={handleClick}>
         
         <Menu.Item className='menu-item' key='home' icon={<MailOutlined style={{color:'white'}}/>}>
-          <Link to="/home"> <span>Home</span></Link> 
+           <span>Home</span>
         </Menu.Item>
         <Menu.SubMenu className='menu-item' title='Products' icon={<AppstoreOutlined style={{color:'white'}} />}>
           <Menu.Item key='product1'>Product 1</Menu.Item>
