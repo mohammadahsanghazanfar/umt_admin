@@ -13,11 +13,26 @@
     top: 0.7rem;
     border-radius: 4px;
     
-  
+     h3{
+    
+    height: 3rem;
+    border-radius: 64px;
+    display: inline-block;
+    color: white;
+    font-size: x-large;
+    
+    
+
+
+     width: 4rem;
+     }
+     
    img{
     height: 4rem;
+    display: inline-block;
     color: black;
     background-color: rgb(25, 25, 80) ;
+    border: 2px solid black;
     border-radius: 64px;
      width: 4rem;
     
@@ -55,13 +70,13 @@
     background: $primary;
     justify-content: center;
     display: inline-block;
-    margin-left: 40%;
-    position: relative;
-    top: -4rem;
+    margin-left: 15%;
+     position: absolute;
+     top: 1.5%;
     width: 60%;
 
     .menu-item {
-      position: relative;
+    
       padding-top: 2%;
 
       

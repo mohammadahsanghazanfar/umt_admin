@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined,UserOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './navbar.scss'; // Import your CSS file for styles
+import { userActions } from '../store';
 
-const Navbar = ({showLog}) => {
+const Navbar = () => {
   const [selectedKeys, setSelectedKeys] = useState(['home']); 
+  const dispatch=useDispatch()
+  const showLog=useSelector((state)=>state.userData.showlog)
+  const username=useSelector((state)=>state.loginData.username)
+
+  useEffect(()=>{
+    
+     console.log(`showLog ${showLog}`)
+  },[showLog])
   
    const navigate=useNavigate()
   const handleClick = (e) => {
@@ -14,12 +25,15 @@ const Navbar = ({showLog}) => {
   };
   const handlelogout=()=>{
        navigate('/')
+       dispatch(userActions.setLog(false))
   }
 
   return (
     <div className='div-1' >
+
+
       <div className='menu-img'>
-          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpAnoF8g7BKqNii_LPUWkU_5p8qR54r1CIxA&s' alt='Logo'></img>
+     { showLog  ? <h3> {username}</h3> : <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpAnoF8g7BKqNii_LPUWkU_5p8qR54r1CIxA&s' alt='Logo'></img>}
         </div>
 
 

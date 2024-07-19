@@ -1,11 +1,22 @@
 import React from 'react';
 import { Button, Form, Input } from 'antd';
 import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import './LoginForm.scss';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { userActions  } from '../store/index';
+import {useSelector} from 'react-redux'
+import { loginActions } from '../store/loginindex';
 
 
-const LoginForm = ({ checkLogin }) => {
+const LoginForm = ({ checkLogin1 }) => {
+
+
+
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
+  const found=useSelector((state)=> state.loginData.validatelogin)
   const initialValues = {
     username: '',
     password: '',
@@ -30,7 +41,20 @@ const LoginForm = ({ checkLogin }) => {
         username: values.username,
         password: values.password,
       };
-      checkLogin(obj);
+        dispatch(loginActions.checkLogin(obj))
+
+        console.log("found" ,found)
+
+        if(found){
+
+        checkLogin1(true)
+        dispatch(loginActions.setValidateLogin(false))
+        navigate('/movies')
+        dispatch(loginActions.setUserName(values.username))
+        }
+      
+   
+      
     },
   });
 
@@ -68,7 +92,7 @@ const LoginForm = ({ checkLogin }) => {
 
       <Form.Item style={{ position: 'relative', left: '37%', width: '25rem' }}>
         <Button type='primary' htmlType='submit' size='large' style={{ width: '150%' }}>
-          Submit
+          Sign In
         </Button>
       </Form.Item>
     </Form>
