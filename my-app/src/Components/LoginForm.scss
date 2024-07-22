@@ -1,33 +1,30 @@
-.loginform{
-    
-    margin-left: 20%;
-    margin-top: 5%;
-    
+.loginform {
+   margin-left: 20%;
+   margin-top: 5%;
 
-   label{
-    font-weight: bold;
-    margin-bottom: 25px;
-    font-size: larger !important;
-    
-    
-  
-
-   } 
-   .ant-input{
-    
-    
-    border: 1px solid black;
-    font-size: large;
-
+   label {
+       font-weight: bold;
+       margin-bottom: 25px;
+       font-size: larger !important;
    }
-   .ant-input-affix-wrapper{
-    margin-left: 20px;
-    border:   1px solid black;
-    font-size: large;
 
-    
+   .ant-input {
+       border: 1px solid black;
+       font-size: large;
    }
-   #basic_username{
-      margin-left: 20px;
+
+   .ant-input-affix-wrapper {
+       margin-left: 20px;
+       border: 1px solid black;
+       font-size: large;
+   }
+
+   #basic_username {
+       margin-left: 20px;
+   }
+
+   /* Ensure password input text remains white */
+   input[type="password"] {
+       color: white !important;
    }
 }
