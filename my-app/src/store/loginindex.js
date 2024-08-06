@@ -16,7 +16,7 @@ const slice = createSlice({
       state.username = action.payload;
     },
     checkLogin(state, action) {
-      let found = state.login.find((user) => {
+       let found=  state.login.find((user) => {
         return (
           user.username === action.payload.username &&
           user.password === action.payload.password
@@ -24,7 +24,9 @@ const slice = createSlice({
       });
 
       if (found) {
+        
         state.validatelogin = true;
+        console.log(state.validatelogin)
       } else {
         state.openModal = true;
       }

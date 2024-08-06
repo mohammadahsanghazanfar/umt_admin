@@ -32,7 +32,7 @@ export default function Login({ checkLogin }) {
       <h2 className="login-head">Login</h2>
       <LoginForm checkLogin1={checkingLogin} />
 
-      <Modal
+      {/* <Modal
         title="Invalid credentials"
         open={openModal}
          onCancel={handleCancel}
@@ -41,7 +41,7 @@ export default function Login({ checkLogin }) {
         <p>
           The username or password you entered is incorrect. Please try again.
         </p>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }
